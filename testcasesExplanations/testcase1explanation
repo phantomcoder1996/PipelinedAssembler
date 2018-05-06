@@ -9,7 +9,7 @@ SUB R2,R1 --this instruction will not be executed
 JN R2 --this jmp will not be taken
 DEC R2 --R2 now contains 10
 LDM R3,65535
-MUL R3,R2 --R2 will contain  1111111111110110(-10) R3 0000000000001001(9)
+MUL R3,R2 --R2 will contain  1111111111110101(-11) R3 0000000000001010(10)
 LDM R4,20 
 ADD R3,R4 --R4 = 29
 STD R4,10 ADDRESS 10 C0NTAINS 29
@@ -75,7 +75,6 @@ PUSH R1
 LDM R4,75
 NOP
 JMP R4
-
 
 
 
