@@ -19,8 +19,15 @@ public class Main {
         Translator.initializeOpcodes();
         Translator.initializeRegisters();
         Translator.initUsesDst();
+        MemoryManager.initMemory(1024,1024);
         AssemblyFManager fManager=new AssemblyFManager();
-        fManager.readFile("TestCases/TestCase1.txt");
-        fManager.writeFile("TestCasesResults/TestCase1.mem");
+        fManager.readFile("sampletestcase.asm");
+       // fManager.readFile("TestCases/testcase3.txt");
+        //fManager.writeFile("TestCasesResults/TestCase2.mem");
+
+        MemoryManager.loadInstructionMemory(fManager.instructions);
+
+        fManager.writeMemory("TestCasesResults/TestCase3Ram.mem");
+        fManager.writeInstructionMemory("TestCasesResults/TestCase3.mem");
     }
 }

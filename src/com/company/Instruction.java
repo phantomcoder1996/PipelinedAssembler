@@ -10,6 +10,8 @@ class Instruction
     String dst;
     String immediate;
     public boolean twoWord=false;
+    public boolean isAddress=false;
+    public Integer address=0;
 
 
     private void getImmediateBinaryString(String token)
@@ -32,7 +34,20 @@ class Instruction
         String[] tokens= ins.split("\\s+");
         op=tokens[0];
 
-        if(tokens.length==2)
+        if(tokens.length==1)
+        {
+            try {
+
+                address = Integer.parseInt(op.substring(1));
+                isAddress = true;
+            }
+            catch (NumberFormatException e)
+            {
+                src="r0";
+                dst="r0";
+            }
+        }
+        else if(tokens.length==2)
         {
             if(op.equals("push")||op.equals("call")||op.equals("pop")||op.equals("jmp")||op.equals("jz")||op.equals("jn")||op.equals("jc"))
             {
